@@ -36,7 +36,7 @@ height: 100%">
 
         <div id="tutorialDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto; font-size: 1em;align-items: center;height: 80%;">
             <div class="card-header" style="text-align: center;width: 100%">Hogyan is kell játszani?</div>
-            <img class="card-img-top" src="tutorial.gif" style="height: 30%; width: auto">
+            <img class="card-img-top" src="gif/tutorial.gif" style="height: 30%; width: auto">
             <div class="card-body" style="text-align:center">
                 <p id="tutorialText" class="card-text"></p>
                 <div class="row">
@@ -74,17 +74,31 @@ height: 100%">
 
                 <div id="learnDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content;">
                     <div class="card-header" style="text-align: center;">Tanulás</div>
-                    <div class="card-body">
+                    <div class="card-body" style="text-align: center">
                         <p class="card-text">Válaszd ki mit szeretnél tanulni, de gondold át, hiszen minél a hosszabb ideig tanulsz, annál több tudást szerezhetsz.</p>
+                       <div class="row">
                         <div style="text-align: center; padding-right: 1%;margin:0 auto">
-                        <input type="button" id="fishing" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(1)" value="Pecázás"></input>
-                        <p>1kör -> 1tp</p>
+                            <input type="button" id="fishing" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(1)" value="Pecázás"></input>
+                            <p>1kör -> 1tp</p>
                         </div>
-                        <input type="button" id="pottery" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(2)" value="Agyagozás"></input>
-                        <input type="button" id="language" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(3)" value="Nyelv tanulás"></input>
-                        <input type="button" id="okj" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(8)" value="Szakma tanulása"></input>
-                        <input type="button" id="university" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(15)" value="Egyetemi tanulás"></input>
-                    </div>
+                        <div style="text-align: center; padding-right: 1%;margin:0 auto">
+                            <input type="button" id="pottery" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(2)" value="Agyagozás"></input>
+                            <p>2kör -> 3tp</p>
+                        </div>
+                        <div style="text-align: center; padding-right: 1%;margin:0 auto">
+                            <input type="button" id="language" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(3)" value="Nyelv tanulás"></input>
+                            <p>3kör -> 5tp</p>
+                        </div>
+                        <div style="text-align: center; padding-right: 1%;margin:0 auto">
+                            <input type="button" id="okj" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(8)" value="Szakma tanulása"></input>
+                            <p>8kör -> 15tp</p>
+                        </div>
+                        <div style="text-align: center; padding-right: 1%;margin:0 auto">
+                            <input type="button" id="university" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(15)" value="Egyetemi tanulás"></input>
+                            <p>15kör -> 30tp</p>
+                        </div>
+                        </div>
+                     </div>
                 </div>
 
                 <div id="shopDiv" class="card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">

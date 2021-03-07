@@ -121,7 +121,7 @@ function learnTime(){
         learnCnt++;
         var correctGif;
         switch(learnEnd){
-            case(2): correctGif = ""; break;
+            case(2): correctGif = "gif/keramia.gif"; break;
             case(3): correctGif = "gif/nyelv.gif"; break;
             case(8): correctGif = "gif/szakma.gif"; break;
             case(15): correctGif = "gif/egyetem.gif"; break;
@@ -343,7 +343,10 @@ function endOfRound(gifName = ""){
         }
         else{
             jQuery("#gifable").attr("style","height: 60%;width: auto;margin: 0 auto");
-            jQuery("#gifText").text("");
+            if(gifName != "gif/keramia.gif")
+            {
+              jQuery("#gifText").text("");
+            }
         }
         jQuery("#gifable").attr("src",gifName);
         jQuery("#upJumper").show();
