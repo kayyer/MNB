@@ -354,7 +354,7 @@ function endOfRound(gifName = ""){
         if(gifName == "gif/nyelv.gif" || gifName == "gif/szakma.gif" || gifName == "gif/egyetem.gif" )
         {
 
-            jQuery("#gifable").attr("style","width: 40%;height: auto;margin: 0 auto");
+            ///jQuery("#gifable").attr("style","width: 40%;height: auto;margin: 0 auto");
         }
         else{
             jQuery("#gifable").attr("style","height: 60%;width: auto;margin: 0 auto");
@@ -365,7 +365,7 @@ function endOfRound(gifName = ""){
         }
         jQuery("#gifable").attr("src",gifName);
         jQuery("#upJumper").show();
-        setTimeout(()=>{jQuery("#upJumper").hide();},2);
+        setTimeout(()=>{jQuery("#upJumper").hide();},2000);
     }
 }
 
