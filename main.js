@@ -14,15 +14,6 @@ var increment = products.holiday/50;
 
 jQuery(document).ready(initiatePage);
 
-//TODO: 
-//Kör eltelte függvény kiemelése DONE
-//Bolt -> árak * tudás DONE 
-//Hitel érték átnézése - most nem is megy DONE
-//hitel max érték állítása, nem a simáé  DONE
-//Egészség -> kör átalakítása
-//Egészség növelésének átgondolása - végtelen játék
-
-
 
 function initiatePage(){
     jQuery("#tutorialBut").hide();
@@ -93,6 +84,7 @@ function tutorialNext(skip){
             jQuery("#tutorialBut").hide();
             jQuery("#upControllerDiv").fadeIn(300);
             jQuery("#controllerDiv").fadeIn(300);
+			jQuery("#freeBut").attr("disabled", true);
             refreshData();
     }
     tutorialCnt++;
@@ -318,6 +310,13 @@ function refreshData(){
     jQuery("#happinessLabel").text("Boldogság:" + happiness);
     jQuery("#healthLabel").text("Egészség:"+health);
     jQuery("#friendsLabel").text("Barátok:" + friends);
+	
+	if(freeTimes > 0){
+		jQuery("#freeBut").attr("disabled", false);
+	}
+	else{
+		jQuery("#freeBut").attr("disabled", true);
+	}
     
     priceRefresh();
 }
@@ -336,6 +335,7 @@ function endOfRound(gifName = ""){
             money -= loanValue;
         }
     }
+	
     if(freeLevel > 0)
     {
         if(weekDays == 7)
@@ -354,7 +354,7 @@ function endOfRound(gifName = ""){
         if(gifName == "gif/nyelv.gif" || gifName == "gif/szakma.gif" || gifName == "gif/egyetem.gif" )
         {
 
-            ///jQuery("#gifable").attr("style","width: 40%;height: auto;margin: 0 auto");
+            //jQuery("#gifable").attr("style","width: 40%;height: auto;margin: 0 auto");
         }
         else{
             jQuery("#gifable").attr("style","height: 60%;width: auto;margin: 0 auto");
@@ -365,7 +365,7 @@ function endOfRound(gifName = ""){
         }
         jQuery("#gifable").attr("src",gifName);
         jQuery("#upJumper").show();
-        setTimeout(()=>{jQuery("#upJumper").hide();},2000);
+        setTimeout(()=>{jQuery("#upJumper").hide();}, 2000);
     }
 }
 
