@@ -3,11 +3,14 @@ var tutorialCnt, roundCnt;                                  //hol tart a tutoria
 var learnCnt, learnEnd;                                     //tanulás állapota és tanulás vége
 var loanTill, loanValue;                                    //meddig kell törleszteni és mennyit körönként
 
+
+
 var freeLevel = 0;
 var weekDays = 1;
 var freeTimes = 0;
 
 var products = {medicine:5,chocolate:1,cinema:4,videogame:7,bike:12,holiday:50};
+var increment = products.holiday/50;
 
 jQuery(document).ready(initiatePage);
 
@@ -51,7 +54,6 @@ function startClick(){
     tutorialCnt = 0;
     tutorialNext();
 }
-
 //Következő tutorial lap
 function tutorialNext(skip){
     if(skip){
@@ -95,11 +97,10 @@ function tutorialNext(skip){
     }
     tutorialCnt++;
 }
-
 //Dolgozik egy kört
 function workTime(){
     money += knowledge;
-    endOfRound("work.gif");
+    endOfRound("gif/work.gif");
 }
 
 //Tanul egy kört
@@ -118,6 +119,27 @@ function learnTime(){
     else if(learnCnt < learnEnd){       //van aktív tanulás és nincs befejezve
         jQuery("#learnDiv").hide();
         learnCnt++;
+        var correctGif;
+        switch(learnEnd){
+            case(2): correctGif = ""; break;
+            case(3): correctGif = "gif/nyelv.gif"; break;
+            case(8): correctGif = "gif/szakma.gif"; break;
+            case(15): correctGif = "gif/egyetem.gif"; break;
+        }
+        if(learnEnd - learnCnt == 0)
+        {
+            switch(learnEnd){
+                case(2): jQuery("#gifText").text("Gratulálunk kiérdemeltél 3 tudáspontot");; break;
+                case(3): jQuery("#gifText").text("Gratulálunk kiérdemeltél 5 tudáspontot"); break;
+                case(8): jQuery("#gifText").text("Gratulálunk kiérdemeltél 15 tudáspontot"); break;
+                case(15):jQuery("#gifText").text("Gratulálunk kiérdemeltél 30 tudáspontot"); break;
+            }
+            
+        }
+        else{
+        jQuery("#gifText").text("Még " + (learnEnd - learnCnt) + " körön keresztül kell tanulnod");
+        }
+        
         if(learnCnt == learnEnd){       //befejezte a tanulást, kap tudást    
             switch(learnEnd){
                 case(2): knowledge += 3; break;
@@ -128,8 +150,7 @@ function learnTime(){
             learnEnd = 0;
             learnCnt = 0;
         }
-
-        endOfRound();
+        endOfRound(correctGif);
  
     }
     refreshData();
@@ -146,7 +167,7 @@ function learnSet(learn){
         knowledge++;
         learnEnd = 0; learnCnt = 0;
 
-        endOfRound("pecazas.gif");
+        endOfRound("gif/pecazas.gif");
     
     }
 }
@@ -157,7 +178,7 @@ function freeTime(){
     {
         health += 2;
         freeTimes--;
-        jQuery("#gifable").attr("src","szabadido.gif");
+        jQuery("#gifable").attr("src","gif/szabadido.gif");
         jQuery("#upJumper").show();
         setTimeout(()=>{jQuery("#upJumper").hide();},2000);
     }
@@ -179,7 +200,7 @@ function sportTime(){
         freeLevel = 2;
         freeTimes = freeLevel;
     }
-    endOfRound("sport.gif");
+    endOfRound("gif/sport.gif");
    
 }
 
@@ -189,11 +210,10 @@ function buy(price){
         //nincs elég pénze
     }
     else{
-        var increment = products.holiday/50;
        
         money -= price;
         switch(price){
-            case(products.medicine): health += 3*increment; break;
+            case(products.medicine): health += 1; break;
             case(products.chocolate): happiness += 1*increment; break;
             case(products.cinema): happiness += 5*increment; break;
             case(products.videogame): happiness += 10*increment; break;
@@ -231,13 +251,13 @@ function openBank(){
 
 //Bolt megnyitása
 function openShop(){
-    jQuery("#videogamePrice").text(products.videogame);
-    jQuery("#chocolatePrice").text(products.chocolate);
-    jQuery("#bikePrice").text(products.bike);
-    jQuery("#cinemaPrice").text(products.cinema);
-    jQuery("#holidayPrice").text(products.holiday);
-    jQuery("#medicinePrice").text(products.medicine);
-    
+    jQuery("#videogamePrice").text(products.videogame + "Vp -> " + increment*10 + "Bp");
+    jQuery("#chocolatePrice").text(products.chocolate + "Vp -> " + increment*1 + "Bp");
+    jQuery("#bikePrice").text(products.bike + "Vp -> " + increment*20 + "Bp");
+    jQuery("#cinemaPrice").text(products.cinema + "Vp -> " + increment*5 + "Bp");
+    jQuery("#holidayPrice").text(products.holiday + "Vp -> " + increment*100 + "Bp");
+    jQuery("#medicinePrice").text(products.medicine + "Vp -> 1Ép");
+
     if(jQuery('#shopDiv').css('display') == 'none'){ 
         closeTabs();
         jQuery("#shopDiv").show();
@@ -317,6 +337,14 @@ function endOfRound(gifName = ""){
     refreshData();
     if(gifName != "")
     {
+        if(gifName == "gif/nyelv.gif" || gifName == "gif/szakma.gif" || gifName == "gif/egyetem.gif" )
+        {
+            jQuery("#gifable").attr("style","width: 60%;height: auto;margin: 0 auto");
+        }
+        else{
+            jQuery("#gifable").attr("style","height: 60%;width: auto;margin: 0 auto");
+            jQuery("#gifText").text("");
+        }
         jQuery("#gifable").attr("src",gifName);
         jQuery("#upJumper").show();
         setTimeout(()=>{jQuery("#upJumper").hide();},2000);
@@ -331,6 +359,7 @@ function priceRefresh(){
         for(var index in products){
             products[index] *= multiple;
         }
+        increment = products.holiday/50;
        
     }
 }
