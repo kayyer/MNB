@@ -20,7 +20,7 @@ height: 100%">
 <div id="upJumper" style="display: none">
     <div class="fixed-top d-flex align-items-center" style="height: 100%;width: 100%;background-color : rgba(180,180,180,0.8)" >
         <img id="gifable" style="height: 60%;width: auto;margin:0 auto" />
-        <p id="gifText" style="width: 100%;text-align: center;margin:0 auto;font-size: 4em;position: fixed;bottom:20%"></p>
+        <p id="gifText" style="width: 100%;text-align: center;margin:0 auto;font-size: 4em;position: fixed;bottom:8%"></p>
     </div>
 </div>
     <main class="d-flex align-items-center" style=" font-family: 'Akaya Telivigala'; opacity: 0.9; height: 100%; font-size: 3em;">
@@ -29,8 +29,8 @@ height: 100%">
         <div id="startDiv" class=" card bg-light" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
             <div class="card-header" style="text-align: center;">AmBáTa játéka</div>
             <div class="card-body" style="text-align:center;">
-                <p class="card-text">Szia! A játék elindításához nyomd meg a start gombot.</p>
-                <input type="button" id="startBut" class="btn btn-success" style="font-size:2em" onclick="startClick()" value="Start"></input>
+                <p id="start" class="card-text">Szia! A játék elindításához nyomd meg a start gombot.</p>
+                <input type="button" id="startBut" class="btn btn-success" style="font-size:1.3em" onclick="startClick()" value="Start"></input>
             </div>
         </div>
 
@@ -41,10 +41,10 @@ height: 100%">
                 <p id="tutorialText" class="card-text"></p>
                 <div class="row">
                     <div class="container text-center">
-                        <input type="button" id="tutorialBut" class="btn btn-warning mb-4" style="font-size:1.5em" onclick="tutorialNext(false)" value="Tovább"></input>
+                        <input type="button" id="tutorialBut" class="btn btn-warning mb-4" style="font-size:1.3em" onclick="tutorialNext(false)" value="Tovább"></input>
                     </div>
-                    <div class="container text-right">
-                        <input type="button" id="tutorialSkip" class="btn btn-secondary" style="font-size: 1em" onclick="tutorialNext(true)" value="Kihagyás"></input>
+                    <div class="container text-center">
+                        <input type="button" id="tutorialSkip" class="btn btn-secondary" style="font-size: 0.8em" onclick="tutorialNext(true)" value="Kihagyás"></input>
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@ height: 100%">
 
             <div id="upControllerDiv" class="fixed-top bg-light" style="opacity: 0.8;">
                 <div class="row d-flex justify-content-around">
-                    <input type="button" id="shopBut" class="btn btn-primary" style="font-size: 1em" onclick="openShop()" value="Bolt"></input>
-                    <input type="button" id="bankBut" class="btn btn-primary" style="font-size: 1em" onclick="openBank()" value="Bank"></input>
+                    <input type="button" id="shopBut" class="btn btn-primary" style="font-size: 1.5em" onclick="openShop()" value="Bolt"></input>
+                    <input type="button" id="bankBut" class="btn btn-primary" style="font-size: 1.5em" onclick="openBank()" value="Bank"></input>
                 </div>
                 <div class="row">
                     <div id="datas" class="container text-center">
@@ -139,22 +139,22 @@ height: 100%">
 
                 <div id="bankDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
                     <div class="card-header" style="text-align: center;">Bank</div>
-                    <div class="card-body">
-                        <p class="card-text">Üdvözlünk a bankban. Itt tudsz felvenni hitelt, ha esetleg túl kevés a vagyonod, de gondold át, mert vissza kell fizetned!</p>
-                        <input type="number" id="loan" class="" min="1" max ="*jsvariable*"></input>
+                    <div class="card-body" style="text-align: center">
+                        <p id="bankText" class="card-text">Üdvözlünk a bankban. Itt tudsz felvenni hitelt, ha esetleg túl kevés a vagyonod, de gondold át, mert vissza kell fizetned!</p>
+                        <input type="number" id="loan" class="" min="1" max ="*jsvariable*"  style="width : 8%; height: auto"></input>
                         <label for="backLoan" value="Visszafizetendő: "></label>
-                        <input type="number" id="backLoan" disabled="true" class=""></input>
-                        <input type="button" id="loanBut" style="font-size: 1em" class="" value="Hitel felvétele" onclick="makeLoan()"></input>
+                        <input type="number" id="backLoan" disabled="true" style="width : 8%; height: auto"></input>
+                        <input type="button" id="loanBut" style="font-size: 1em"   value="Hitel felvétele" onclick="makeLoan()"></input>
                     </div>
                 </div>
             </div>
 
             <div id="controllerDiv" class="fixed-bottom">
-                <div class="d-flex justify-content-between">
-                    <input type="button" id="workBut" class="btn btn-primary" style="font-size: 1em" onclick="workTime()" value="Munka"></input>
-                    <input type="button" id="learnBut" class="btn btn-primary" style="font-size: 1em" onclick="learnTime()" value="Tanulás"></input>
-                    <input type="button" id="freeBut" class="btn btn-primary" style="font-size: 1em" onclick="freeTime()" value="Szabidős tevékenység"></input>
-                    <input type="button" id="sportBut" class="btn btn-primary" style="font-size: 1em" onclick="sportTime()" value="Sportolás"></input>
+                <div class="row d-flex justify-content-around">
+                    <input type="button" id="workBut" class="btn btn-primary" style="font-size: 1.5em" onclick="workTime()" value="Munka"></input>
+                    <input type="button" id="learnBut" class="btn btn-primary" style="font-size: 1.5em" onclick="learnTime()" value="Tanulás"></input>
+                    <input type="button" id="freeBut" class="btn btn-primary" style="font-size: 1.5em" onclick="freeTime()" value="Szabidős tevékenység"></input>
+                    <input type="button" id="sportBut" class="btn btn-primary" style="font-size: 1.5em" onclick="sportTime()" value="Sportolás"></input>
                 </div>
             </div>
         

@@ -230,7 +230,20 @@ function buy(price){
 function openBank(){
     if(jQuery('#bankDiv').css('display') == 'none'){ 
         closeTabs();
-        jQuery("#bankDiv").show();
+        jQuery("#bankDiv").fadeIn(700);
+        if(loanTill > roundCnt)
+        {
+            jQuery("#bankText").text("Még " + (loanTill-roundCnt) + " körön keresztül kell az adósságod fizetned, addig nem vehetsz fel újabb hitelt." );
+            jQuery("#loan").hide();
+            jQuery("#backLoan").hide();
+            jQuery("#loanBut").hide();
+        }
+        else{
+            jQuery("#loan").show();
+            jQuery("#backLoan").show();
+            jQuery("#loanBut").show();
+
+            jQuery("#bankText").text("Üdvözlünk a bankban. Itt tudsz felvenni hitelt, ha esetleg túl kevés a vagyonod, de gondold át, mert vissza kell fizetned!");
         var input = document.getElementById("loan");
         input.setAttribute("max",Math.floor(((knowledge/4)*((round+health)-roundCnt)/1.05))); //Azert osztom el 1.05el mert a max a kamatos penzre vonatkozik
         jQuery("#loan").val(Math.floor((knowledge/4)*((round+health)-roundCnt)/2));
@@ -243,6 +256,7 @@ function openBank(){
             }
             jQuery("#backLoan").val(Math.floor(jQuery("#loan").val()*1.05));
         });
+    }
     }
     else{
         closeTabs();
@@ -271,9 +285,8 @@ function openShop(){
 function makeLoan(){
     if(loanTill < roundCnt){
         var loanMoney = parseInt(Math.floor(jQuery("#loan").val()*1.05));
-        //loanValue = loanMoney / ((round+health) - roundCnt);
         loanTill = Math.floor(loanMoney / (knowledge/4)) + roundCnt; // mindig a tudas negyedet vonja le, es igy ha nem vesz fel sok hitelt hamar torlesztheti
-        //loanTill = (round+health) - (loanMoney / loanValue);
+
         loanValue = Math.floor(knowledge/4);
         money += parseInt(jQuery("#loan").val());
         closeTabs();
@@ -291,7 +304,8 @@ function closeTabs(){
 //Értékek változtak, frissítjük html-t
 function refreshData(){
     
-    if((round + health) <= roundCnt){
+    if((round + health) < roundCnt){
+        jQuery("#start").text("A játék véget ért! Az elért boldogságpontjaid száma: " + happiness + ". Gratulálunk hozzá!");
         jQuery("#startDiv").show();
         jQuery("#controllerDiv").hide();
         jQuery("#upControllerDiv").hide();
@@ -339,7 +353,8 @@ function endOfRound(gifName = ""){
     {
         if(gifName == "gif/nyelv.gif" || gifName == "gif/szakma.gif" || gifName == "gif/egyetem.gif" )
         {
-            jQuery("#gifable").attr("style","width: 60%;height: auto;margin: 0 auto");
+
+            jQuery("#gifable").attr("style","width: 40%;height: auto;margin: 0 auto");
         }
         else{
             jQuery("#gifable").attr("style","height: 60%;width: auto;margin: 0 auto");
@@ -350,7 +365,7 @@ function endOfRound(gifName = ""){
         }
         jQuery("#gifable").attr("src",gifName);
         jQuery("#upJumper").show();
-        setTimeout(()=>{jQuery("#upJumper").hide();},2000);
+        setTimeout(()=>{jQuery("#upJumper").hide();},2);
     }
 }
 
