@@ -1,0 +1,112 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Akaya Telivigala' rel='stylesheet'>
+
+    <script src="main.js"></script> 
+</head>
+
+<body style="background: url('background-school.png') no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: cover;
+-o-background-size: cover;">
+    <main class="d-flex align-items-center" style=" font-family: 'Akaya Telivigala'; opacity: 0.9; height: 100%; font-size: 3em;">
+
+        <div id="startDiv" class=" card bg-light" style="width:fit-content; width:-moz-fit-content;">
+            <div class="card-header" style="text-align: center;">AmBáTa játéka</div>
+            <div class="card-body" style="text-align:center;">
+                <p class="card-text">Szia! A játék elindításához nyomd meg a start gombot.</p>
+                <input type="button" id="startBut" class="btn btn-success" style="font-size:2em" onclick="startClick()" value="Start"></input>
+            </div>
+        </div>
+
+        <div id="tutorialDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+            <div class="card-header" style="text-align: center;">Hogyan is kell játszani?</div>
+            <img class="card-img-top" src="tutorial.gif" style="max-height: 20%;">
+            <div class="card-body" style="text-align:center">
+                <p id="tutorialText" class="card-text"></p>
+                <div class="row">
+                    <div class="container text-center">
+                        <input type="button" id="tutorialBut" class="btn btn-warning mb-4" style="font-size:1.5em" onclick="tutorialNext(false)" value="Tovább"></input>
+                    </div>
+                    <div class="container text-right">
+                        <input type="button" id="tutorialSkip" class="btn btn-secondary" style="font-size: 1em" onclick="tutorialNext(true)" value="Kihagyás"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+
+            <div id="upControllerDiv" class="fixed-top bg-light" style="opacity: 0.8;">
+                <div class="row d-flex justify-content-around">
+                    <input type="button" id="shopBut" class="btn btn-primary" style="font-size: 1em" onclick="openShop()" value="Bolt"></input>
+                    <input type="button" id="bankBut" class="btn btn-primary" style="font-size: 1em" onclick="openBank()" value="Bank"></input>
+                </div>
+                <div class="row">
+                    <div id="datas" class="container text-center">
+                        <label id="roundLabel"></label>
+                        <label id="roundCntLabel"></label>
+                        <label id="valueLabel"></label>
+                        <label id="knowledgeLabel"></label>
+                        <label id="happinessLabel"></label>
+                        <label id="healthLabel"></label>
+                        <label id="friendsLabel"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div stlye="margin-top: 40%; margin-left: 10%; margin-right: 10%;">
+
+                <div id="learnDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+                    <div class="card-header" style="text-align: center;">Tanulás</div>
+                    <div class="card-body">
+                        <p class="card-text">Válaszd ki mit szeretnél tanulni, de gondold át, hiszen minél a hosszabb ideig tanulsz, annál több tudást szerezhetsz.</p>
+                        <input type="button" id="fishing" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(1)" value="Pecázás"></input>
+                        <input type="button" id="pottery" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(2)" value="Agyagozás"></input>
+                        <input type="button" id="language" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(3)" value="Nyelv tanulás"></input>
+                        <input type="button" id="okj" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(8)" value="Szakma tanulása"></input>
+                        <input type="button" id="university" class="btn btn-primary" style="font-size: 1em" onclick="learnSet(15)" value="Egyetemi tanulás"></input>
+                    </div>
+                </div>
+
+                <div id="shopDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+                    <div class="card-header" style="text-align: center;">Bolt</div>
+                    <div class="card-body">
+                        <p class="card-text">Üdvözlünk a boltban! Alább látod miket vásárolhatsz.</p>
+                        <input type="button" id="medicine" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.medicine)" value="Gyógyszer"></input>
+                        <input type="button" id="chocolate" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.chocolate)" value="Csoki"></input>
+                        <input type="button" id="cinema" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.cinema)" value="Mozijegy"></input>
+                        <input type="button" id="videogame" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.videogame)" value="Videójáték"></input>
+                        <input type="button" id="bike" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.bike)" value="Bicikli"></input>
+                        <input type="button" id="holiday" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.holiday)" value="Nyaralás"></input>
+                    </div>
+                </div>
+
+                <div id="bankDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+                    <div class="card-header" style="text-align: center;">Bank</div>
+                    <div class="card-body">
+                        <p class="card-text">Üdvözlünk a bankban. Itt tudsz felvenni hitelt, ha esetleg túl kevés a vagyonod, de gondold át, mert vissza kell fizetned!</p>
+                        <input type="number" id="loan" class="" min="1" max ="*jsvariable*"></input>
+                        <label for="backLoan" value="Visszafizetendő: "></label>
+                        <input type="number" id="backLoan" disabled="true" class=""></input>
+                        <input type="button" id="loanBut" style="font-size: 1em" class="" value="Hitel felvétele" onclick="makeLoan()"></input>
+                    </div>
+                </div>
+            </div>
+
+            <div id="controllerDiv" class="fixed-bottom">
+                <div class="d-flex justify-content-between">
+                    <input type="button" id="workBut" class="btn btn-primary" style="font-size: 1em" onclick="workTime()" value="Munka"></input>
+                    <input type="button" id="learnBut" class="btn btn-primary" style="font-size: 1em" onclick="learnTime()" value="Tanulás"></input>
+                    <input type="button" id="freeBut" class="btn btn-primary" style="font-size: 1em" onclick="freeTime()" value="Szabidős tevékenység"></input>
+                    <input type="button" id="sportBut" class="btn btn-primary" style="font-size: 1em" onclick="sportTime()" value="Sportolás"></input>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
