@@ -62,7 +62,7 @@ function tutorialNext(skip){
         case(0): 
             jQuery("#tutorialBut").show();
             jQuery("#tutorialSkip").show();
-            jQuery("#tutorialText").text("A játékban négy négy fő elem van: Tudás, Vagyon, Boldogság és Egészség. Ezekkel kell a következőekben ügyesen bánnod.");
+            jQuery("#tutorialText").text("A játékban négy fő elem van: Tudás, Vagyon, Boldogság és Egészség. Ezekkel kell a következőekben ügyesen bánnod.");
             jQuery("#tutorialDiv").fadeIn(400);
             break;
         case(1): 
@@ -72,17 +72,17 @@ function tutorialNext(skip){
             jQuery("#tutorialText").text("A vagyonból a boltban tudsz venni boldogságot nyújtó tárgyakat, illetve gyógyszert az egészséged növelése érdekében.");
             break;
         case(3): 
-            jQuery("#tutorialText").text("Az egészségeddel együtt a hátralévő körök száma is nő, így próbálj mindig egészséges lenni! A tudásod pedig a munkáért cserébe kapott fizettségedet növeli, tehát minél több a tudásod, annál több vagyonra tehetsz szert egy munkával.");
+            jQuery("#tutorialText").text("Az egészségeddel együtt a hátralévő körök száma is nő, így próbálj mindig egészséges lenni! A tanulás segítségével szerezhetsz tudást. A tudásoddal megegyező vagyont kapsz, ha dolgozol, tehát minél több a tudásod, annál több vagyonra tehetsz szert egy munkával.");
             break;
         case(4):
-            jQuery("#tutorialText").text("A szabadidős tevékenységekkel tudsz szerezni barátokat és egészséget növelni, míg tanulással tudásra tehetsz szert.");
+            jQuery("#tutorialText").text("A szabadidős tevékenységekkel egészségre tehetsz szert, azonban ennek száma korlátozva van! Ha legalább tíz barátod van, akkor hét köröknént egyszer végezhetsz szabadidős tevékenységet, míg húsz barát felett már akár kétszer is.");
             break;
         case(5):
-            jQuery("#tutorialText").text("Ha netán kevés a vagyonod lehetőséged lesz a bankban hitelt felvenni, amivel vagyonra tehetsz szert, de cserébe a hátralévő köreidben vissza kell fizetned a hitelt");
+            jQuery("#tutorialText").text("Ha netán kevés a vagyonod lehetőséged lesz a bankban hitelt felvenni, amivel vagyonra tehetsz szert, de cserébe a hátralévő köreidben vissza kell fizetned a hitelt. Ha nem tudod visszafizetni, mert elfogy a vagyonod, onnantól a boldogságod fog csökkenni.");
             break;
         case(6):
-            jQuery("#tutorialText").text("Ha elfogy a vagyonod mínuszba kerül az egészséged és a boldogságod romlani fog!");
-            jQuery("#tutorialBut").val("Játszunk!");
+            jQuery("#tutorialText").text("A sport segítségével tudsz barátokat szerezni. A boltban az árak a tudásodtól függően növekedni fognak, de cserébe több boldogságot is kapsz!");
+            jQuery("#tutorialBut").val("Játsszunk!");
             break;
         default:
             jQuery("#tutorialDiv").hide();
