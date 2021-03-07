@@ -1,10 +1,13 @@
+  
+<!DOCTYPE html><meta charset="UTF-8">
+
+<html style="height: 100%">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Akaya Telivigala' rel='stylesheet'>
-
     <script src="main.js"></script> 
 </head>
 
@@ -12,10 +15,17 @@
 -webkit-background-size: cover;
 -moz-background-size: cover;
 background-size: cover;
--o-background-size: cover;">
+-o-background-size: cover;
+height: 100%">
+<div id="upJumper" style="display: none">
+    <div class="fixed-top d-flex align-items-center" style="height: 100%;width: 100%;background-color : rgba(180,180,180,0.8)" >
+        <img id="gifable" src="pecazas.gif" style="height: 60%;width: auto;margin:0 auto" />
+    </div>
+</div>
     <main class="d-flex align-items-center" style=" font-family: 'Akaya Telivigala'; opacity: 0.9; height: 100%; font-size: 3em;">
 
-        <div id="startDiv" class=" card bg-light" style="width:fit-content; width:-moz-fit-content;">
+
+        <div id="startDiv" class=" card bg-light" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
             <div class="card-header" style="text-align: center;">AmBáTa játéka</div>
             <div class="card-body" style="text-align:center;">
                 <p class="card-text">Szia! A játék elindításához nyomd meg a start gombot.</p>
@@ -23,9 +33,9 @@ background-size: cover;
             </div>
         </div>
 
-        <div id="tutorialDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
-            <div class="card-header" style="text-align: center;">Hogyan is kell játszani?</div>
-            <img class="card-img-top" src="tutorial.gif" style="max-height: 20%;">
+        <div id="tutorialDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto; font-size: 1em;align-items: center;height: 80%;">
+            <div class="card-header" style="text-align: center;width: 100%">Hogyan is kell játszani?</div>
+            <img class="card-img-top" src="tutorial.gif" style="height: 30%; width: auto">
             <div class="card-body" style="text-align:center">
                 <p id="tutorialText" class="card-text"></p>
                 <div class="row">
@@ -39,7 +49,7 @@ background-size: cover;
             </div>
         </div>
 
-        <div class="">
+       
 
             <div id="upControllerDiv" class="fixed-top bg-light" style="opacity: 0.8;">
                 <div class="row d-flex justify-content-around">
@@ -59,9 +69,9 @@ background-size: cover;
                 </div>
             </div>
 
-            <div stlye="margin-top: 40%; margin-left: 10%; margin-right: 10%;">
+            <div class="d-flex align-items-center justify-content-center" stlye="margin-top: 40%; width: 100%">
 
-                <div id="learnDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+                <div id="learnDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content;">
                     <div class="card-header" style="text-align: center;">Tanulás</div>
                     <div class="card-body">
                         <p class="card-text">Válaszd ki mit szeretnél tanulni, de gondold át, hiszen minél a hosszabb ideig tanulsz, annál több tudást szerezhetsz.</p>
@@ -73,16 +83,39 @@ background-size: cover;
                     </div>
                 </div>
 
-                <div id="shopDiv" class=" card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
+                <div id="shopDiv" class="card bg-light mt-5" style="width:fit-content; width:-moz-fit-content; margin: 0 auto;">
                     <div class="card-header" style="text-align: center;">Bolt</div>
                     <div class="card-body">
                         <p class="card-text">Üdvözlünk a boltban! Alább látod miket vásárolhatsz.</p>
-                        <input type="button" id="medicine" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.medicine)" value="Gyógyszer"></input>
-                        <input type="button" id="chocolate" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.chocolate)" value="Csoki"></input>
-                        <input type="button" id="cinema" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.cinema)" value="Mozijegy"></input>
-                        <input type="button" id="videogame" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.videogame)" value="Videójáték"></input>
-                        <input type="button" id="bike" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.bike)" value="Bicikli"></input>
-                        <input type="button" id="holiday" class="btn btn-primary" style="font-size: 1em" onclick="buy(products.holiday)" value="Nyaralás"></input>
+                    <div class="row d-flex align-items-center">
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/medicine.svg" id="medicine" class="btn" style="height: 100px;width: auto" onclick="buy(products.medicine)"></input>
+                            <p id="medicinePrice"></p>
+                        </div>
+
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/chocolate-bar.svg" id="chocolate" class="btn" style="height: 100px;width: auto" onclick="buy(products.chocolate)"></input>
+                            <p id="chocolatePrice"></p>
+                        </div>
+
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/cinema.svg" id="cinema" class="btn" style="height: 100px;width: auto" onclick="buy(products.cinema)"></input>
+                            <p id="cinemaPrice"></p>
+                        </div>
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/game-console.svg" videogame" class="btn" style="height: 100px;width: auto" onclick="buy(products.videogame)"></input>
+                            <p id="videogamePrice"></p>
+                        </div>
+
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/bicycle.svg" id="bike" class="btn" style="height: 100px;width: auto" onclick="buy(products.bike)"></input>
+                            <p id="bikePrice"></p>
+                        </div>
+                        <div style="padding-right: 1%;margin:0 auto" >
+                            <input type="image" src="icon/sunbed.svg" id="holiday" class="btn" style="height: 100px;width: auto" onclick="buy(products.holiday)"></input>
+                            <p id="holidayPrice"></p>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
@@ -106,7 +139,8 @@ background-size: cover;
                     <input type="button" id="sportBut" class="btn btn-primary" style="font-size: 1em" onclick="sportTime()" value="Sportolás"></input>
                 </div>
             </div>
-        </div>
+        
 
     </main>
 </body>
+</html>

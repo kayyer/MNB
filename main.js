@@ -3,7 +3,9 @@ var tutorialCnt, roundCnt;                                  //hol tart a tutoria
 var learnCnt, learnEnd;                                     //tanulás állapota és tanulás vége
 var loanTill, loanValue;                                    //meddig kell törleszteni és mennyit körönként
 
-var loan, backLoan;
+var freeLevel = 0;
+var weekDays = 1;
+var freeTimes = 0;
 
 var products = {medicine:5,chocolate:1,cinema:4,videogame:7,bike:12,holiday:50};
 
@@ -97,7 +99,7 @@ function tutorialNext(skip){
 //Dolgozik egy kört
 function workTime(){
     money += knowledge;
-    endOfRound();
+    endOfRound("work.gif");
 }
 
 //Tanul egy kört
@@ -143,23 +145,42 @@ function learnSet(learn){
     else{
         knowledge++;
         learnEnd = 0; learnCnt = 0;
-        endOfRound();
 
+        endOfRound("pecazas.gif");
+    
     }
 }
 
 //Szabadidős tevékenységet végez
 function freeTime(){
-    friends++;
-    health += 2;
-    endOfRound();
+    if(freeTimes > 0)
+    {
+        health += 2;
+        freeTimes--;
+        jQuery("#gifable").attr("src","szabadido.gif");
+        jQuery("#upJumper").show();
+        setTimeout(()=>{jQuery("#upJumper").hide();},2000);
+    }
+    refreshData();
+    
+   
 }
 
 //Sportol
 function sportTime(){
-    health += 3;
-    knowledge += 1;
-    endOfRound();
+    friends++;
+    if(friends == 10)       //ha eleri a 10 baratot 1x szabadidozhet
+    {
+        freeLevel = 1;          //beallitom a szabadido szintet 1re
+        freeTimes = freeLevel;  //freeTimes-szor szabadidozhet meg(a heten ezt majd az endOfRoundban mindig ujra toltom)
+    }
+    else if(friends == 20)       //ha eleri a 20 baratot 2x szabadidozhet
+    {
+        freeLevel = 2;
+        freeTimes = freeLevel;
+    }
+    endOfRound("sport.gif");
+   
 }
 
 //Vásárlás
@@ -210,6 +231,13 @@ function openBank(){
 
 //Bolt megnyitása
 function openShop(){
+    jQuery("#videogamePrice").text(products.videogame);
+    jQuery("#chocolatePrice").text(products.chocolate);
+    jQuery("#bikePrice").text(products.bike);
+    jQuery("#cinemaPrice").text(products.cinema);
+    jQuery("#holidayPrice").text(products.holiday);
+    jQuery("#medicinePrice").text(products.medicine);
+    
     if(jQuery('#shopDiv').css('display') == 'none'){ 
         closeTabs();
         jQuery("#shopDiv").show();
@@ -261,8 +289,9 @@ function refreshData(){
 }
 
 
-function endOfRound(){
+function endOfRound(gifName = ""){
     roundCnt++;
+    happiness += friends;
     if(loanTill > roundCnt){
         if(money - loanValue < 1)
         {
@@ -273,8 +302,25 @@ function endOfRound(){
             money -= loanValue;
         }
     }
+    if(freeLevel > 0)
+    {
+        if(weekDays == 7)
+        {
+            weekDays = 1;
+            freeTimes = freeLevel;
+        }
+        else{
+            weekDays++;
+        }
+    }
     closeTabs();
     refreshData();
+    if(gifName != "")
+    {
+        jQuery("#gifable").attr("src",gifName);
+        jQuery("#upJumper").show();
+        setTimeout(()=>{jQuery("#upJumper").hide();},2000);
+    }
 }
 
     
@@ -285,5 +331,6 @@ function priceRefresh(){
         for(var index in products){
             products[index] *= multiple;
         }
+       
     }
 }
