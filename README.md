@@ -13,3 +13,4 @@ Ha a vagyon elfogy, a hitel törlesztése a boldogságból fog történni.
 
 A játékban felhasznált képek szabadon felhasználható képek, míg a gifek általunk készítettek. A html fájl futtatásával egyszerűen elindítható a játék.
 A ranglista elkészítését a digitális diákszéf alkalmazásban tudnánk elképzelni, de ehhez nem férünk hozzá, így ezt nem tudjuk kivitelezni.
+ 
